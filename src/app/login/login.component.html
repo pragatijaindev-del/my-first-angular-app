@@ -1,12 +1,15 @@
-<h2>Login</h2>
-
+<h2>Login Form</h2>
+<!-- this will decide our ui template -->
+<!-- Email Input -->
 <div>
   <label>Email:</label><br />
+  <!-- Two-way data binding -->
   <input type="email" [(ngModel)]="email" />
 </div>
 
 <br />
 
+<!-- Password Input -->
 <div>
   <label>Password:</label><br />
   <input type="password" [(ngModel)]="password" />
@@ -14,4 +17,15 @@
 
 <br />
 
+<!-- 
+  Event binding,Button click hone par login() method call hoga
+-->
 <button (click)="login()">Login</button>
+
+<hr>
+
+<!-- passing message and its type to message componentMessage -->
+
+<app-message [message]="message"
+  [type]="messageType"></app-message>
+  

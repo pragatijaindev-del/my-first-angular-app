@@ -1,0 +1,10 @@
+<!-- 
+  *ngIf:
+  only display when its not empty
+-->
+<p *ngIf="message"
+   [style.color]="type === 'success' ? 'green' : 'red'">
+  
+  {{ message }}
+
+</p>
