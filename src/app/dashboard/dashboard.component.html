@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<h2>Welcome User</h2>
+
+<hr />
+
+<h3>Add Todo</h3>
+<app-create-todo
+  (addTodoEvent)="todoList.addTodo($event)">
+</app-create-todo>
+
+<!-- <h3>Todo List</h3> -->
+<app-todo-list #todoList></app-todo-list>

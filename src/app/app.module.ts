@@ -20,6 +20,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 // MessageComponent is used to show success / error messages
 import { MessageComponent } from './message/message.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { CreateTodoComponent } from './create-todo/create-todo.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @NgModule({
   /*
@@ -28,9 +32,13 @@ import { AppRoutingModule } from './app-routing.module';
   */
   declarations: [
     AppComponent,        // Root component
-    LoginComponent,      // Login form component
+    LoginComponent,            // Login form component
     DashboardComponent,  // Dashboard UI component
-    MessageComponent     // Message display component
+    MessageComponent, 
+    HeaderComponent,
+     FooterComponent,
+    CreateTodoComponent,
+     TodoListComponent     // Message display component
   ],
 
   /*
