@@ -1,6 +1,21 @@
-<ul>
+<h3>Todo List</h3>
+
+<!-- *ngIf: conditional UI -->
+<p *ngIf="todos.length === 0">
+  No todos found
+</p>
+
+<!-- *ngFor: list rendering -->
+<ul *ngIf="todos.length > 0">
   <li *ngFor="let todo of todos; let i = index">
-    {{ todo }}
+
+    <!-- ngClass for completed state -->
+    <span
+      [ngClass]="{ completed: todo.completed }"
+      (click)="toggleTodo(i)">
+      {{ todo.text }}
+    </span>
+
     <button (click)="deleteTodo(i)">Delete</button>
   </li>
 </ul>

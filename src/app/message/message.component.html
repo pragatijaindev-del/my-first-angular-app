@@ -1,10 +1,7 @@
-<!-- 
-  *ngIf:
-  only display when its not empty
--->
-<p *ngIf="message"
-   [style.color]="type === 'success' ? 'green' : 'red'">
-  
+<p
+  *ngIf="message"
+  [ngStyle]="{
+    color: type === 'success' ? 'green' : 'red'
+  }">
   {{ message }}
-
 </p>

@@ -1,9 +1,8 @@
 <h2>Login Form</h2>
-<!-- this will decide our ui template -->
+
 <!-- Email Input -->
 <div>
   <label>Email:</label><br />
-  <!-- Two-way data binding -->
   <input type="email" [(ngModel)]="email" />
 </div>
 
@@ -17,15 +16,13 @@
 
 <br />
 
-<!-- 
-  Event binding,Button click hone par login() method call hoga
--->
 <button (click)="login()">Login</button>
 
-<hr>
+<hr />
 
-<!-- passing message and its type to message componentMessage -->
-
-<app-message [message]="message"
-  [type]="messageType"></app-message>
-  
+<!-- *ngIf: message sirf tab dikhe jab value ho -->
+<app-message
+  *ngIf="message"
+  [message]="message"
+  [type]="messageType">
+</app-message>
