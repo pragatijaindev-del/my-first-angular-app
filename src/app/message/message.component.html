@@ -1,7 +1,4 @@
-<p
-  *ngIf="message"
-  [ngStyle]="{
-    color: type === 'success' ? 'green' : 'red'
-  }">
+<!-- presentational component receives message from parents and its type -->
+<p [style.color]="type === 'success' ? 'green' : 'red'">
   {{ message }}
 </p>

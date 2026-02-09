@@ -1,3 +1,4 @@
+// acts as a container it hosts two child component create todo and todo list
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {
-  username = 'User';
+  
 }

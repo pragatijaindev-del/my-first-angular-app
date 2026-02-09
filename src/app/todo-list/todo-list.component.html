@@ -1,21 +1,23 @@
 <h3>Todo List</h3>
-
-<!-- *ngIf: conditional UI -->
-<p *ngIf="todos.length === 0">
-  No todos found
-</p>
-
-<!-- *ngFor: list rendering -->
-<ul *ngIf="todos.length > 0">
+<!-- Shows a message only when there are no todos -->
+<p *ngIf="todos.length === 0">No todos found</p>
+<!-- Renders the list only when todos exist -->
+<ul *ngIf="todos.length">
+  <!-- Iterates over the todos array , exposes index for operations -->
+ 
   <li *ngFor="let todo of todos; let i = index">
 
-    <!-- ngClass for completed state -->
-    <span
-      [ngClass]="{ completed: todo.completed }"
-      (click)="toggleTodo(i)">
-      {{ todo.text }}
+    <span *ngIf="!todo.editing"
+          (click)="toggleTodo(i)"
+          [style.textDecoration]="todo.completed ? 'line-through' : 'none'">
+      {{ todo.text | uppercaseFirst }}
     </span>
 
+    <input *ngIf="todo.editing" [(ngModel)]="todo.text" />
+<!-- user interaction -->
+    <button *ngIf="!todo.editing" (click)="editTodo(i)">Edit</button>
+    <button *ngIf="todo.editing" (click)="saveTodo(i)">Save</button>
     <button (click)="deleteTodo(i)">Delete</button>
+
   </li>
 </ul>

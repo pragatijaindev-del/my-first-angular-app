@@ -1,11 +1,10 @@
-<h2>Welcome User</h2>
+<!-- this is the parent component shows dashboard renders todo creation child component -->
+ <!-- listens events from child and  forward it to child todo list. -->
+ <!-- its a template driven orchestration pattern -->
+<h2>Dashboard</h2>
 
-<hr />
-
-<h3>Add Todo</h3>
 <app-create-todo
   (addTodoEvent)="todoList.addTodo($event)">
 </app-create-todo>
 
-<!-- <h3>Todo List</h3> -->
 <app-todo-list #todoList></app-todo-list>

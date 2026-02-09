@@ -1,28 +1,19 @@
-<h2>Login Form</h2>
+<!-- this class is holding login UI -->
+<h2>Login</h2>
 
-<!-- Email Input -->
-<div>
-  <label>Email:</label><br />
-  <input type="email" [(ngModel)]="email" />
-</div>
+<input type="email" placeholder="Email" [(ngModel)]="email" /> //two way binding
+<br /><br />
 
-<br />
-
-<!-- Password Input -->
-<div>
-  <label>Password:</label><br />
-  <input type="password" [(ngModel)]="password" />
-</div>
-
-<br />
+<input type="password" placeholder="Password" [(ngModel)]="password" />
+<br /><br />
 
 <button (click)="login()">Login</button>
 
-<hr />
-
-<!-- *ngIf: message sirf tab dikhe jab value ho -->
+<!-- conditionally  creates and destroyes app message component -->
+ <!-- passes data from parent child component,binds component class vlues to child inputs -->
 <app-message
   *ngIf="message"
-  [message]="message"
+  [message]="message" 
   [type]="messageType">
 </app-message>
+<!-- display feedback -->

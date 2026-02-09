@@ -1,18 +1,8 @@
 import { Component } from '@angular/core';
-// this is the root component of angular
+
 @Component({
+  // acts as root  HTML element of SPA, single entry point  to control entire UI
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-
-  count = 0;
-
-  increment() {
-    this.count++;
-  }
-
-  decrement() {
-    this.count--;
-  }
-}
+export class AppComponent {}
