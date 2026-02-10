@@ -13,6 +13,8 @@ import { MessageComponent } from './message/message.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
 import { UppercaseFirstPipe } from './uppercase-first-pipe.service';
+import { HttpClientModule } from '@angular/common/http';
+
 // groups realated buildong blocks
 @NgModule({
   // Registers components and pipes with this module
@@ -33,9 +35,11 @@ import { UppercaseFirstPipe } from './uppercase-first-pipe.service';
    
   imports: [
     BrowserModule,
-    FormsModule,// enblaes ngmodel ,important for  template driven forms
+    FormsModule,
+    HttpClientModule ,// enblaes ngmodel ,important for  template driven forms
     AppRoutingModule
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

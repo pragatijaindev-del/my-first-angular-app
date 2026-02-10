@@ -1,13 +1,49 @@
 <!-- this class is holding login UI -->
 <h2>Login</h2>
+<!-- this will track form validity and state, ng submit enables form submission -->
+<form #loginForm="ngForm" (ngSubmit)="login()">
 
-<input type="email" placeholder="Email" [(ngModel)]="email" /> //two way binding
-<br /><br />
+  <!-- this is for the email validation -->
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    
+    [(ngModel)]="email" 
+    #emailRef="ngModel"
+    required
+    email
+  />
 
-<input type="password" placeholder="Password" [(ngModel)]="password" />
-<br /><br />
+  <div *ngIf="emailRef.invalid && emailRef.touched">
+    <small *ngIf="emailRef.errors?.['required']"> Email is required</small>
+    <small *ngIf="emailRef.errors?.['email']">Enter valid email</small>
+  </div>
 
-<button (click)="login()">Login</button>
+  <br /><br />
+
+  <!-- Password -->
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    [(ngModel)]="password"
+    #passwordRef="ngModel"
+    required
+    minlength="6"
+  />
+
+  <div *ngIf="passwordRef.invalid && passwordRef.touched">
+    <small>Password should be atleast 6 characters</small>
+  </div>
+
+  <br /><br />
+
+  <button type="submit" [disabled]="loginForm.invalid">
+    Login
+  </button>
+
+</form>
 
 <!-- conditionally  creates and destroyes app message component -->
  <!-- passes data from parent child component,binds component class vlues to child inputs -->

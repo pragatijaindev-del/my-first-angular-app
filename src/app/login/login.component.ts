@@ -19,25 +19,27 @@ export class LoginComponent {
   ) {}
 
   // event driven method
-  login(): void {
-// delegate authentication logic
-    const success = this.authService.login(this.email, this.password);
 
-    if (success) {
+
+
+  login(): void {
+
+  // Temporary mock call structure , will integrate backend  tomorrow)
+  //Subscribes to the HTTP Observable returned by HttpClient
+  this.authService.login(this.email, this.password).subscribe({
+    next: () => {
       this.message = 'Login successful';
       this.messageType = 'success';
-      
-// Allows success message to be visible before redirect
-      setTimeout(() => {
-        this.router.navigate(['/dashboard']);
-      }, 800);
-
-    } else {
+    },
+    error: () => {
       this.message = 'Login failed';
       this.messageType = 'error';
     }
+  });
 
-    this.email = '';
-    this.password = '';
-  }
+  this.email = '';
+  this.password = '';
+}
+
+    
 }

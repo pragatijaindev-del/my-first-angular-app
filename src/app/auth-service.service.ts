@@ -1,29 +1,53 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
- // AuthService handles authentication logic.
-  //This is a fake auth system for learning purposes.
+  //AuthService handles authentication-related operations.
+  //Currently used for frontend API integration .
 
-@Injectable({ // marks class as avaible for DI and registers it to angular root injector
-  providedIn: 'root' //Creates one instance for entire application 
+@Injectable({
+  providedIn: 'root' // Single instance available across the application
 })
 export class AuthService {
 
-  private loggedIn = false; // stores authentication status,encapsulation,Enforces controlled access through methods
+  // Base URL for backend api,will use in backend integration
+  private apiUrl = 'http://localhost:8080/api';
 
-  login(email: string, password: string): boolean { // ensures single shared logic(singleton)
-    if (email && password) {
-      this.loggedIn = true;
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) {} // HttpClient injected for API calls
+
+  
+    //Calls login API with email and password
+    //Returns Observable (HTTP POST)
+  
+  login(email: string, password: string) {
+    return this.http.post<any>(`${this.apiUrl}/login`, {
+      email,
+      password
+    });
   }
 
-  logout(): void { // clears authentication state
-    this.loggedIn = false;
+  
+   // Saves JWT token in browser storage
+  
+  saveToken(token: string): void {
+    localStorage.setItem('token', token);
   }
 
-  isAuthenticated(): boolean { // checks user logged in or not
-    return this.loggedIn;
+  
+    //Retrieves JWT token from storage
+  
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
+
+  
+    //Checks whether user is authenticated
+  
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+logout(): void {
+  localStorage.removeItem('token');
+}
 }
